@@ -47,14 +47,8 @@ class QuestionController extends AbstractController
      * @return Response
      * @throws InvalidArgumentException
      */
-    public function show($slug, MarkdownHelper $markdownHelper, HubInterface $sentryHub)
+    public function show($slug, MarkdownHelper $markdownHelper)
     {
-
-        dump($sentryHub);
-//        dump($this->getParameter('cache_adapter'));
-
-        throw new \Exception('bad stuff happened!');
-
         if ($this->isDebug) {
             $this->logger->info('We are in debug mode!');
         }
