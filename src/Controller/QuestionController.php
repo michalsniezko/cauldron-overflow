@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Service\MarkdownHelper;
 use Psr\Cache\InvalidArgumentException;
 use Psr\Log\LoggerInterface;
+use Sentry\State\HubInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,14 +47,18 @@ class QuestionController extends AbstractController
      * @return Response
      * @throws InvalidArgumentException
      */
-    public function show($slug, MarkdownHelper $markdownHelper)
+    public function show($slug, MarkdownHelper $markdownHelper, HubInterface $sentryHub)
     {
+
+        dump($sentryHub);
 //        dump($this->getParameter('cache_adapter'));
+
+        throw new \Exception('bad stuff happened!');
 
         if ($this->isDebug) {
             $this->logger->info('We are in debug mode!');
         }
-        
+
         $answers = [
             'Make **sure** your cat is sitting purrrfectly still 🤣',
             'Honestly, I like furry shoes better than MY cat',
